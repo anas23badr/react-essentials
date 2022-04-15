@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import restaurant from './restaurant.jpg'
 
 function Main(props){
   console.log(props);
   return(
     <section>
       <p>We serve the most delicious food around</p>
+      <img src={restaurant} height={200} alt="Napkin and silverware"/>
       <ul style={{textAlign:"left"}}>
         {props.dishes.map((dish)=>(
           <li key={dish.id}>{dish.title}</li>

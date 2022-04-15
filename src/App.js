@@ -1,16 +1,22 @@
 import React from 'react';
 import './App.css';
 
-function Main(){
+function Main(props){
+  console.log(props);
   return(
     <section>
       <p>We serve the most delicious food around</p>
+      <ul style={{textAlign:"left"}}>
+        {props.dishes.map((dish)=>(
+          <li key={dish.id}>{dish.title}</li>
+        ))}
+      </ul>
     </section>
   );
     
 }
 function Header(props){
-  console.log(props)
+  
   return(
     <header>
       <h1>{props.name}'s Kitchen</h1>
@@ -24,11 +30,16 @@ function Footer(props){
     </footer>
   );
 }
+const dishes=[
+  "Veg Biryani",
+  "Sambar, Rice, Papad",
+  "Spichie Paneer"];
+  const dishObject= dishes.map( (dish, i)=>({ id: i, title: dish }) );
 function App() {
   return (
     <div className="App">
       <Header name="Cookoo"/>
-      <Main/>
+      <Main dishes={dishObject}/>
       <Footer year={new Date().getFullYear()}/>
     </div>
   );

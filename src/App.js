@@ -8,7 +8,7 @@ function SecretComponent(){
 function RegularComponent(){
   return <h1>Everyone can see this component</h1>
 }
-function App(props) {
+function App({authorized}) {//props object destructuring {property1, property2,...}
   
     /*if(props.authorized){
       return <SecretComponent/>
@@ -18,7 +18,7 @@ function App(props) {
     }*/
     return(
       <>
-      {props.authorized? <SecretComponent/> : <RegularComponent/>}
+      {authorized? <SecretComponent/> : <RegularComponent/>}
       </>
     )
    

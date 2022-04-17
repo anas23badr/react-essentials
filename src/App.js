@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 
 
 function App() {
-  const [emotion, setEmotion]= useState("happy");  
-  const [secondary, setSecondary]= useState("tired");
-  useEffect(()=>{
-    console.log(`It's ${emotion} around here!`);
-  }, [emotion]); //useEffect is used to track the change in  state , a call back funtion is called when the state changes..it can be used to console log the cahnges or can be used for effects
-  useEffect(()=>{
-    console.log(`It's ${secondary} around here!`);
-  }, [secondary]);
+  const [checked, toggle]= useReducer(
+    (checked)=>(!checked),
+      false
+    );// useReducer is like a useState. I takes in  two paramter. Second parameter is the initial state, and the first parameter is a call back function used to toggle the state change.It can be called onClick or change event
+  
   return(
     <>
-    <h1>Current emotion is {emotion} and {secondary}.</h1>
-    <button onClick={()=>setEmotion("happy")}>Make Happy</button>
-    <button onClick={()=>setSecondary("Crabby")}>Make Crabby</button>
-    <button onClick={()=>setEmotion("Frustrated")}>Frustrate</button>
-    <button onClick={()=>setEmotion("Enthusiastic")}>Enthuse</button>
+    <input type="checkBox" value={checked} onChange={toggle}/>
+    <p>{checked ? "checked": "not checked"}</p>
     </>
+   
   )
 }
 

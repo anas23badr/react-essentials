@@ -12,7 +12,10 @@ function App({login}) {
   }, []); //we only want fetch data only once on page load thats why []
   if (data){
     return(
-      <div> {JSON.stringify(data)} </div>
+      <div>
+      <h1>{data.login}</h1>
+      <img src={data.avatar_url}/>
+      </div>
     )
   } 
   else

@@ -8,7 +8,7 @@ const [,,light]= ["boots", "tent", "headlamp"];
 console.log(light);
 
 ReactDOM.render(
-<App authorized={true}/>,
+<App login="anas23badr"/>,
 document.getElementById("root")
 );
 

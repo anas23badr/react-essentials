@@ -1,38 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
+import {Routes, Route} from 'react-router-dom'
+import{Home, About, Events, Contact} from './pages.js'
 
-// https://api.github.com/users/anas23badr
-function App({login}) {
-  const [data, setData]=useState(null);
-  const[loading, setLoading]=useState(false);
-  const[error, setError]= useState(null);
-  
-  useEffect(()=>{
-    if(!login) return;
-    setLoading(true);
-    fetch(`https://api.github.com/users/${login}`)
-    .then(response=> response.json())
-    .then(setData)
-    .then(setLoading(false))
-    .catch(setError);
-  }, [login]);
-  
-  if (loading)
-  return <h1>Loading..</h1>
-  if(error)
-  return <pre>{JSON.stringify(error, null ,2)}</pre>
-  if (data){
+function App() {
     return(
       <div>
-      <h1>{data.login}</h1>
-      <img src={data.avatar_url} alt="your profile"/>
+        <Routes>
+          <Route path="react-essentials/" element={<Home />}></Route>
+          <Route path="react-essentials/about" element={<About />}></Route>
+          <Route path="react-essentials/events" element={<Events />}></Route>
+          <Route path="react-essentials/contact" element={<Contact />}></Route>
+        </Routes>
       </div>
     )
-  } 
-  else
-  return <div>No user available</div>
-   
-  
 }
 
 export default App;
